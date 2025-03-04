@@ -26,7 +26,9 @@ int main(){
 
     std::thread http_server_thread(run_http_server, &stop_flag);
 
-    http_server_thread.join();
+    if (http_server_thread.joinable()){
+        http_server_thread.join();
+    }  
     std::cout << "Execution is finished" << std::endl;
     return 0;
 }

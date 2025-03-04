@@ -3,12 +3,31 @@
 #include <atomic>
 #include <chrono>
 #include <thread>
+#include <csignal>
+
+// external
+#include "../external/crow/crow_all.h"
 
 void run_http_server(std::atomic<bool>* stop_flag_ptr){
+    crow::SimpleApp app;
+
+    CROW_ROUTE(app, "/")([]() {
+        return "Hello, World!";
+    });
+
+    // Run the server asynchronously
+    std::thread server_thread([&]() {
+        app.port(8080).multithreaded().run();
+    });
+
+    // Wait for the stop flag
     while (!stop_flag_ptr->load()) {
-        std::cout << "Placeholder server is running" << std::endl;
-        std::this_thread::sleep_for(std::chrono::milliseconds(700));
+        std::this_thread::sleep_for(std::chrono::milliseconds(500));
     }
 
-    std::cout << "Placeholder server is turned off" << std::endl;
+    if (server_thread.joinable()) {
+        server_thread.join();
+    }
+
+    std::cout << "Server stopped." << std::endl;
 }
