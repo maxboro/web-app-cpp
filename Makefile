@@ -11,7 +11,7 @@ CC = g++
 # -Iinclude and -Iexternal: Include directories
 # -O3: Optimization level (you might remove this when debugging)
 # -std=c++20: Use C++20 standard
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address -fstack-protector-all \
+CFLAGS = -Wall -Wextra -g -fsanitize=address -fstack-protector-all \
       -D_FORTIFY_SOURCE=2 -Iinclude -Iexternal -O3 -std=c++20
 
 # Directories

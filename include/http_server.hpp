@@ -1,14 +1,18 @@
 #pragma once
 
-#include <atomic>
-#include <chrono>
-#include <thread>
+#include <iostream>
 
-void run_http_server(std::atomic<bool>* stop_flag_ptr){
-    while (!stop_flag_ptr->load()) {
-        std::cout << "Placeholder server is running" << std::endl;
-        std::this_thread::sleep_for(std::chrono::milliseconds(700));
-    }
+// external
+#include "../external/crow/crow_all.h"
 
-    std::cout << "Placeholder server is turned off" << std::endl;
+void run_http_server(){
+    crow::SimpleApp app;
+
+    CROW_ROUTE(app, "/")([]() {
+        return "Hello, World!";
+    });
+
+    app.port(8080).multithreaded().run();
+
+    std::cout << "Server stopped." << std::endl;
 }
