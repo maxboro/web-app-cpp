@@ -21,4 +21,4 @@ Terminal:
 # Credits
 
 This project uses the following open-source libraries:
--
+- Crow (v1.0+5 Security Patch): [link](https://github.com/CrowCpp/Crow.git), [license](https://github.com/CrowCpp/Crow/blob/master/LICENSE)
