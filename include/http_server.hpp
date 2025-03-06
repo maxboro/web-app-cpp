@@ -9,7 +9,8 @@ void run_http_server(){
     crow::SimpleApp app;
 
     CROW_ROUTE(app, "/")([]() {
-        return "Hello, World!";
+        auto page = crow::mustache::load_text("index.html");
+        return page;
     });
 
     app.port(8080).multithreaded().run();
