@@ -17,7 +17,6 @@ void handle_sigint(int signal) {
     std::cout << "\nCaught signal " << signal << " (SIGINT). Exiting safely..." << std::endl;
     stop_flag.store(true);
     std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-    // std::exit(0);
 }
 
 int main(){
