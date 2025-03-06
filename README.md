@@ -23,6 +23,9 @@ Running
 Server stopped.
 Execution is finished
 ```
+Web page:
+![Web page example](docs/images/app_screen.png)
+
 # Credits
 
 This project uses the following open-source libraries:
