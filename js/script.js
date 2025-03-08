@@ -7,7 +7,7 @@ const counterServerElement = document.getElementById("counter-server");
 const incrementButton = document.getElementById("incr_count");
 
 function getTimestampS(){
-    return (performance.now() / 1000).toFixed(3); 
+    return (performance.now() / 1000).toFixed(4); 
 }
 
 // Calculate time between sending message and geting acknowledgement
@@ -19,7 +19,7 @@ function calculateRoundTripTimeMS(now, msg_timestamp){
 
 // Create WebSocket and process its events
 function addSocket(socket_address){
-    socket = new WebSocket(`ws://${socket_address}`);
+    socket = new WebSocket(`ws://${socket_address}/ws`);
 
     socket.onopen = function() {
         console.log('Connect OK!');
