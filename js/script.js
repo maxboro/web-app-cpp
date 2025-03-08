@@ -6,6 +6,10 @@ const counterFrontendElement = document.getElementById("counter-frontend");
 const counterServerElement = document.getElementById("counter-server");
 const incrementButton = document.getElementById("incr_count");
 
+function getTimestamp(){
+    return performance.now().toFixed(3); 
+}
+
 // Create WebSocket and process its events
 function addSocket(socket_address){
     socket = new WebSocket(`ws://${socket_address}`);
@@ -27,7 +31,7 @@ function addSocket(socket_address){
 // Process incoming via websocket messages
 function messageProcessing(event){
     let message = JSON.parse(event.data);
-    console.log("Got msg from backend: " + event.data);
+    console.log("Got msg from backend at "+ getTimestamp() + ": " + event.data);
     if (message.type === "increment_acknowledgement"){
         counterServer++;
         counterServerElement.textContent = counterServer;
@@ -38,7 +42,7 @@ function messageProcessing(event){
 function sendMessage(socket, type_msg){
     let msg = {
         type: type_msg,
-        timestamp: performance.now(),
+        timestamp: getTimestamp(),
     }
     let msg_json = JSON.stringify(msg);
     try {
