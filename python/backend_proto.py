@@ -18,7 +18,17 @@ async def send_response(message_dict, websocket):
             "type": "increment_acknowledgement",
             "timestamp": message_dict["timestamp"],
         }
-        await websocket.send(json.dumps(message_to_sent))
+    elif message_dict['type'] == "handshake":
+        message_to_sent = {
+            "type": "handshake_acknowledgement",
+            "timestamp": message_dict["timestamp"],
+        }
+    else:
+        message_to_sent = {
+            "type": "unknown",
+            "timestamp": message_dict["timestamp"],
+        }
+    await websocket.send(json.dumps(message_to_sent))
 
 async def echo(websocket):
     async for message in websocket:

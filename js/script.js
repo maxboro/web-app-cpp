@@ -23,6 +23,7 @@ function addSocket(socket_address){
 
     socket.onopen = function() {
         console.log('Connect OK!');
+        sendMessage(socket, "handshake");
     };
     
     socket.onclose = function(event) {
@@ -44,6 +45,8 @@ function messageProcessing(event){
         console.log("Roundtrip time: " +  calculateRoundTripTimeMS(now, message.timestamp) + "ms");
         counterServer++;
         counterServerElement.textContent = counterServer;
+    } else if (message.type === "handshake_acknowledgement"){
+        console.log("Handshake acknowledgement is received from server")
     }
 }
 
