@@ -2,11 +2,13 @@
 Simple example of web app in C++.
 
 # How to run
-#### Simulation:
+#### Server:
 ```bash
 make           # Builds the project
 ./bin/exec     # Runs the executable
 ```
+#### Frontend
+Open http://localhost:8080/ in web browser.
 
 #### Clean:
 ```bash
