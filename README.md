@@ -23,6 +23,24 @@ Running
 Server stopped.
 Execution is finished
 ```
+
+Web console:
+```terminal
+script.js:25 Connect OK!
+script.js:62 Sent: {"type":"handshake","timestamp":"1.025"}
+script.js:43 Got msg from backend at 1.051s: {"type": "handshake_acknowledgement", "timestamp": "1.025"}
+script.js:49 Handshake acknowledgement is received from server
+script.js:62 Sent: {"type":"increment","timestamp":"9.972"}
+script.js:43 Got msg from backend at 9.977s: {"type": "increment_acknowledgement", "timestamp": "9.972"}
+script.js:45 Roundtrip time: 5.0ms
+script.js:62 Sent: {"type":"increment","timestamp":"13.849"}
+script.js:43 Got msg from backend at 13.854s: {"type": "increment_acknowledgement", "timestamp": "13.849"}
+script.js:45 Roundtrip time: 5.0ms
+script.js:62 Sent: {"type":"increment","timestamp":"14.973"}
+script.js:43 Got msg from backend at 14.976s: {"type": "increment_acknowledgement", "timestamp": "14.973"}
+script.js:45 Roundtrip time: 3.0ms
+```
+
 Web page:
 ![Web page example](docs/images/app_screen.png)
 
